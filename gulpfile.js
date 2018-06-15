@@ -10,6 +10,7 @@ const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const ignore = require('gulp-ignore');
 const runSequence = require('run-sequence');
+const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('clean', () =>
   gulp.src('./dist', {read: false })
@@ -19,6 +20,10 @@ gulp.task('clean', () =>
 gulp.task('buildcss', () =>{
   gulp.src('./src/sass/*.scss')
 	  return sass('./src/sass/*.scss').on('error', sass.logError)
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
 		.pipe(cssmin())
 		.pipe(rename('styles.min.css'))
 		.pipe(gulp.dest('dist'))

@@ -1,0 +1,21 @@
+nav li {
+	display: inline-block;
+	margin: 5px 10px 5px 0;
+	
+}
+nav li a {
+	color: white;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	&:hover {
+		font-size: 1.2em;
+		text-shadow: 0 0 20px #fff;
+	}
+}
+nav {
+	z-index: 1;
+	position: fixed;
+	bottom: 50px;
+	margin: 50px;
+	overflow: hidden;
+}
