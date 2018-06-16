@@ -1,7 +1,7 @@
-#page-intro {
+#page-features {
 	
 	.container {
-		background-image: url("img/jdm%20red%20toyota.jpg");
+		background-image: url("img/jdm%20blue%20mitsubishi.jpg");
 		background-repeat: no-repeat;
 		
 		&:before {
@@ -11,7 +11,7 @@
 			width: 100vw;
 			height: 100vh;
 			top: 0;
-			left: 0;
+			left: 100vw;
 			background: -moz-linear-gradient(left, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 95%);
 			background: -webkit-linear-gradient(left, rgba(0,0,0,1) 5%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 95%);
 			background: linear-gradient(to right, rgba(0,0,0,1) 5%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 95%);
@@ -25,20 +25,24 @@
 		}
 	}
 	
-	.intro-heading {
+	.features-heading {
+		float: right;
+		clear: both;
 		padding: 5px 20px;
 		overflow: hidden;
 		display: inline-block;
 		border-bottom: 1px solid #e2e2e2;
-		border-right: 1px solid #e2e2e2;
+		border-left: 1px solid #e2e2e2;
 		transition: all 0.5s ease;
 	}
-	.intro-subheading {
+	.features-subheading {
+		float: right;
+		clear: both;
 		padding: 0px 5px 5px 5px;
 		width: 300px;
 		overflow: hidden;
 		border-bottom: 1px solid #e2e2e2;
-		border-right: 1px solid #e2e2e2;
+		border-left: 1px solid #e2e2e2;
 		transition: all 0.5s ease;
 	}
 	h1 {
@@ -59,31 +63,33 @@
 		text-shadow: 0px 0px 4px rgba(0,0,0,1);
 		transition: all 0.5s ease;
 	}
-	.intro-para-container {
+	.features-para-container {
+		float: right;
+		clear: both;
 		text-align: justify;
 		width: 50vw;
 		margin: 10px 0;
 		padding: 0 20px;
 		border-top: 1px solid #e2e2e2;
-		border-left: 1px solid #e2e2e2;
+		border-right: 1px solid #e2e2e2;
 		transition: all 0.5s ease;
 	}
 }
 
 
 @media screen and (max-width: 1440px) {
-	#page-intro {
+	#page-features {
 		.container {
 			background-position: center;
 		}
 	}
 }
 @media screen and (max-width: 800px) {
-	#page-intro {
-		.intro-heading {
+	#page-features {
+		.features-heading {
 			padding: 5px 10px;
 		}
-		.intro-subheading {
+		.features-subheading {
 			padding: 0px 10px 5px 10px;
 			width: 210px;
 		}
@@ -99,7 +105,7 @@
 			color: #c9c9c9;
 			text-shadow: 0px 0px 4px rgba(0,0,0,1);
 		}
-		.intro-para-container {
+		.features-para-container {
 			width: 80vw;
 			margin: 5px 0;
 			padding: 0 10px;
@@ -109,11 +115,11 @@
 	}
 }
 @media screen and (max-width: 420px) {
-	#page-intro {
-		.intro-heading {
+	#page-features {
+		.features-heading {
 			padding: 5px 10px;
 		}
-		.intro-subheading {
+		.features-subheading {
 			padding: 0;
 			margin: 0;
 			width: 180px;

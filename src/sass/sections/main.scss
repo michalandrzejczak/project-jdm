@@ -6,17 +6,23 @@ body {
 	overflow-y: hidden;
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none;
+	max-height: 100vh;
 	
 	color: #fff;
 	font-family: "IBM Plex Sans", Calibri, sans-serif;
-	line-height: 1.5em;
+	font-size: 1em;
 	font-weight: 300;
+	line-height: 1.5em;
 }
 
 body::-webkit-scrollbar {
 	display: none;
 }
-
+p {
+	font-size: 0.9em;
+	font-weight: 400;
+	color: #f2f2f2;
+}
 .container {
 	width: 100vw;
 	height: 100vh;
@@ -27,4 +33,7 @@ body::-webkit-scrollbar {
 *::selection {
 	background-color: rgba(255, 255, 255, 0.8);
 	color: #1c1c1c;
+}
+.japanese {
+	font-size: 0.8em;
 }
