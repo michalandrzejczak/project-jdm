@@ -22,14 +22,12 @@ $(function() {
 			scrollDebounce = false;
 			if(delta < 0) // if scroll down
 			{    
-				console.log("scroll down");
 				html.animate({
 					scrollLeft: `+=${pixelStep}`
 				}, scrollTime)
 			}
 			else if(delta > 0) // if scroll up
 			{  
-				console.log("scroll up");
 				html.animate({
 					scrollLeft: `-=${pixelStep}`
 				}, scrollTime)
