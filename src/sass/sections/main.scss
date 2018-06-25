@@ -214,4 +214,9 @@ p {
 			position: relative;
 		}
 	}
+	@media screen and (max-width: 1440px) {
+		.container {
+			background-position: center;
+		}
+	}
 }

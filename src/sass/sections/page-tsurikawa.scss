@@ -1,0 +1,19 @@
+#page-tsurikawa {
+	.container {
+		background-position: bottom;
+	}
+	
+	@include background-section("img/tsurikawa%20skyline.jpg", 400vw);
+	
+	@media screen and (max-width: 1440px) {
+		.container {
+			background-position: bottom;
+		}
+	}
+	/* additional media query for ring visibility improvement */
+	@media screen and (max-width: 500px) {
+		.container {
+			background-position: -600px bottom;
+		}
+	}
+}
