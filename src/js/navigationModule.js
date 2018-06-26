@@ -3,7 +3,10 @@ $(function() {
 	const html = $("html"),
 				navItems = $("nav li"),
 				navLinks = $("nav a"),
-				sections = $("section");
+				sections = $("section"),
+				arrowNext = $(".arrow-next"),
+				arrowPrevious = $(".arrow-previous"),
+				arrows = $(".arrows-container i");
 	
 	let pixelStep = $(window).width(),
 			scrollTime,
@@ -91,11 +94,37 @@ $(function() {
 		sections.each(function (i) {
 			let leftPos = $(this).offset().left,
 					rightPos = leftPos + $(this).outerWidth();
-			if (currentPos > $(this).offset().left && currentPos < rightPos) {
+			if (currentPos > leftPos && currentPos < rightPos) {
 				navItems.removeClass();
 				$("nav").find('a[href="#' + $(this).attr('id') + '"]').parent().addClass('active');
 			}
+		
+			// hiding useless navigation arrows
+			let firstSectionPos = ($("#page-intro").offset().left + $("#page-intro").outerWidth()),
+					 lastSectionPos = $("#page-outro").offset().left;
+			if (currentPos <= firstSectionPos) {
+				arrowPrevious.css("visibility", "hidden");
+			}
+			else if (currentPos >= lastSectionPos) {
+				arrowNext.css("visibility", "hidden");
+			} 
+			else {
+				arrowPrevious.css("visibility", "visible");
+				arrowNext.css("visibility", "visible");
+			}
 		})
 	});
-			
+		
+	// arrows navigation
+	arrows.click(function() {
+		if ($(this).attr("class") == arrowPrevious.attr("class")) {
+			html.animate({
+				scrollLeft: `-=${pixelStep}`
+			}, scrollTime);
+		} else if ($(this).attr("class") == arrowNext.attr("class")) {
+			html.animate({
+				scrollLeft: `+=${pixelStep}`
+			}, scrollTime);
+		}
+	})
 });
