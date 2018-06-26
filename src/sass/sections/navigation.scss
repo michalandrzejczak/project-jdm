@@ -1,7 +1,20 @@
+nav {
+	z-index: 1;
+	position: fixed;
+	top: 85vh;
+	margin: 0 0 0 50px;
+	border-top: 1px solid #fff;
+	&:before {
+		content: "nav";
+		position: absolute;
+		top: -20px;
+		font-size: 0.6em;
+		font-weight: 500;
+	}
+}
 nav li {
 	display: inline-block;
-	margin: 5px 10px 5px 0;
-	
+	margin: 0 10px 5px 0;	
 }
 nav li a {
 	color: white;
@@ -13,10 +26,16 @@ nav li a {
 		text-shadow: 0 0 20px #fff;
 	}
 }
-nav {
-	z-index: 1;
-	position: fixed;
-	bottom: 50px;
-	margin: 50px;
-	overflow: hidden;
+.active {
+	&:before {
+		content: '';
+		display: block;
+		position: relative;
+		border: 6px solid transparent;
+		border-top-color: #fff;
+		width: 0;
+		height: 0;
+		top: 0;
+		margin: 0 auto;
+	}
 }
