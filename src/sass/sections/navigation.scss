@@ -8,13 +8,15 @@ nav {
 		content: "nav";
 		position: absolute;
 		top: -20px;
-		font-size: 0.6em;
+		font-size: 0.7em;
 		font-weight: 500;
 	}
 }
 nav li {
 	display: inline-block;
-	margin: 0 10px 5px 0;	
+	margin: 0 10px 5px 0;
+	opacity: 0.3;
+	transition: all 1s ease;
 }
 nav li a {
 	color: white;
@@ -27,6 +29,7 @@ nav li a {
 	}
 }
 .active {
+	opacity: 1;
 	&:before {
 		content: '';
 		display: block;
