@@ -1,3 +1,57 @@
 #page-outro {
 	@include background-section("img/tokyo%20street.jpg", 500vw);
+	
+	ul {
+		float: right;
+		list-style: none;
+		font-size: 0.7em;
+		li {
+			display: grid;
+			grid-template-columns: 160px 100px 100px;
+		}
+		.section-name {
+			color: #c9c9c9;
+			font-size: 1.5em;
+			margin-left: 20px;
+		}
+	}
+	@media screen and (max-width: 420px) {
+		ul {
+			li {
+				display: grid;
+				grid-template-columns: 140px 80px 55px;
+			}
+			.section-name {
+				font-size: 1.2em;
+				margin-left: 10px;
+			}
+		}
+	}
+	footer {
+		position: absolute;
+		bottom: 0;
+		width: 100vw;
+		height: 40px;
+		background-color: rgba(0, 0, 0, 0.85);
+		border-top: 1px solid #212121;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 0.8em;
+		a {
+			text-decoration: none;
+			border: none;
+			color: #939393;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			&:hover {
+				text-shadow: 0 0 20px #fff;
+			}
+		}
+	}
+	@media screen and (max-width: 800px) {
+		footer {
+			font-size: 0.7em;
+		}
+	}
 }
