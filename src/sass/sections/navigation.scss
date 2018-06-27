@@ -4,6 +4,7 @@ nav {
 	top: 85vh;
 	margin: 0 0 0 50px;
 	border-top: 1px solid #fff;
+	transition: all 0.5s ease;
 	&:before {
 		content: "nav";
 		position: absolute;
@@ -49,6 +50,7 @@ nav li a {
 	right: 2vw;
 	font-size: 2em;
 	color: rgba(255, 255, 255, 0.5);
+	transition: all 0.5s ease;
 	i {
 		cursor: pointer;
 		margin: 0 15px;
@@ -61,4 +63,15 @@ nav li a {
 }
 .arrow-previous {
 	visibility: hidden;
+}
+
+@media screen and (max-width: 800px) {
+	nav {
+		display: none;
+	}
+	.arrows-container {
+		top: unset;
+		bottom: 45px;
+		right: 7vw;
+	}
 }

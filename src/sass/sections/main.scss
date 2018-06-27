@@ -196,6 +196,8 @@ a {
 	.container {
 		background-image: url($image);
 		background-repeat: no-repeat;
+		max-width: 100vw;
+		max-height: 100vh;
 
 		&:before {
 			content: '';
