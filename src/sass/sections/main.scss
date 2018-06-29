@@ -1,6 +1,8 @@
 html, body {
 	overflow-y: hidden;
 	overflow-x: scroll;
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
 }
 body {
 	background-color: #000;
