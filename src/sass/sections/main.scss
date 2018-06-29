@@ -1,9 +1,12 @@
+html, body {
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
 body {
 	background-color: #000;
+	position: relative;  // needed for correct display on smaller devices
 	display: flex;
 	flex-wrap: nowrap;
-	overflow-x: scroll;
-	overflow-y: hidden;
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none;
 	max-height: 100vh;

@@ -1,9 +1,10 @@
 $(function() {
 	
-	const html = $("html"),
+	const body = $("body"),
 				navItems = $("nav li"),
 				navLinks = $("nav a"),
 				sections = $("section"),
+				sectionsArray = [],
 				arrowNext = $(".arrow-next"),
 				arrowPrevious = $(".arrow-previous"),
 				arrows = $(".arrows-container i");
@@ -25,18 +26,18 @@ $(function() {
 	
 	
 	// mousewheel navigation
-	html.mousewheel(function(event, delta) { 
+	body.mousewheel(function(event, delta) { 
 		if (scrollDebounce) {
 			scrollDebounce = false;
 			if(delta < 0) // if scroll down
 			{    
-				html.animate({
+				body.animate({
 					scrollLeft: `+=${pixelStep}`
 				}, scrollTime)
 			}
 			else if(delta > 0) // if scroll up
 			{  
-				html.animate({
+				body.animate({
 					scrollLeft: `-=${pixelStep}`
 				}, scrollTime)
 			}
@@ -47,18 +48,18 @@ $(function() {
 		}
 	});
 	
-	// arrows navigation
+	// keyboard arrows navigation
 	window.addEventListener("keydown", event => {
 		switch (event.keyCode) {
 			case 37: // arrow left
 			case 38: // arrow up
-				html.animate({
+				body.animate({
 					scrollLeft: `-=${pixelStep}`
 				}, scrollTime);
 				break;
 			case 39: // arrow right
 			case 40: // arrow down
-				html.animate({
+				body.animate({
 					scrollLeft: `+=${pixelStep}`
 				}, scrollTime);
 				break;
@@ -69,39 +70,43 @@ $(function() {
 		pixelStep = $(window).width();
 		adjustTime();
 	}
+
+	// links navigation (supporting body {position: relative})
+		sections.each(function(i) {
+			sectionsArray.push("#" + sections[i].getAttribute("id"));
+		});
 	
-	// links navigation
-	navLinks.on("click", scrollToLink);
-	function scrollToLink(event) {
-		const target = $(this.getAttribute("href"));
-		if (!target) {
-			event.preventDefault();
-			html.stop().animate({
-				scrollLeft: 0
-			}, scrollTime);
-		} else {
-			event.preventDefault();
-			html.stop().animate({
-				scrollLeft: target.offset().left
-			}, scrollTime);
-		}
-	};
+		navLinks.on("click", scrollToLink);
+		function scrollToLink(event) {
+			const target = this.getAttribute("href"),
+						moveStep = sectionsArray.indexOf(target);
+			if (!target) {
+				event.preventDefault();
+				body.stop().animate({
+					scrollLeft: 0
+				}, scrollTime);
+			} else {
+				event.preventDefault();
+				body.stop().animate({
+					scrollLeft: moveStep * pixelStep
+				}, scrollTime);
+			}
+		};
 	
 	// following active section during movement and selecting it on navbar
-	$(window).on("scroll", function () {
+	$(body).on("scroll", function () {
 		let currentPos = $(this).scrollLeft() + pixelStep/2;
-		currentPos = $(this).scrollLeft() + pixelStep/2;
 		sections.each(function (i) {
-			let leftPos = $(this).offset().left,
-					rightPos = leftPos + $(this).outerWidth();
-			if (currentPos > leftPos && currentPos < rightPos) {
+			let sectionStartPos = i * pixelStep,
+					sectionEndPos = i * pixelStep + pixelStep;
+			if (currentPos > sectionStartPos && currentPos < sectionEndPos) {
 				navItems.removeClass();
 				$("nav").find('a[href="#' + $(this).attr('id') + '"]').parent().addClass('active');
 			}
 		
 			// hiding useless navigation arrows
-			let firstSectionPos = ($("#page-intro").offset().left + $("#page-intro").outerWidth()),
-					 lastSectionPos = $("#page-outro").offset().left;
+			let firstSectionPos = pixelStep,
+					 lastSectionPos = (sectionsArray.length - 1) * pixelStep;
 			if (currentPos <= firstSectionPos) {
 				arrowPrevious.css("visibility", "hidden");
 			}
@@ -118,11 +123,11 @@ $(function() {
 	// arrows navigation
 	arrows.click(function() {
 		if ($(this).attr("class") == arrowPrevious.attr("class")) {
-			html.animate({
+			body.animate({
 				scrollLeft: `-=${pixelStep}`
 			}, scrollTime);
 		} else if ($(this).attr("class") == arrowNext.attr("class")) {
-			html.animate({
+			body.animate({
 				scrollLeft: `+=${pixelStep}`
 			}, scrollTime);
 		}
