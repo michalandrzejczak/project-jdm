@@ -195,6 +195,153 @@ a {
 	opacity: 0.7;
 }
 
+/* Animations */
+
+.fade-section {
+	opacity: 0;
+	transition: all 0.5s ease;
+	&.animationToggle {
+		opacity: 1;
+		transition: all 0.5s ease;
+	}
+}
+.anim-nav {
+	opacity: 0;
+	transform: perspective(100px) translateZ(-100px);
+	&.animationToggle {
+		opacity: 1;
+		transform: none;
+		transition: all 1s ease-out 2s;
+	}
+}
+.anim-left-heading-container {
+	opacity: 0;
+	transform: translateX(300px);
+	transition: all 1s ease;
+	&.animationToggle {
+		opacity: 1;
+		transform: none;
+		transition: all 1s ease;
+	}
+}
+.anim-left-subheading-container {
+	opacity: 0;
+	transform: translateX(100px);
+	transition: all 1s ease;
+	&.animationToggle {
+		opacity: 1;
+		transform: none;
+		transition: all 1s ease;
+	}
+}
+.anim-right-heading-container {
+	@extend .anim-left-heading-container;
+	transform: translateX(-300px);
+}
+.anim-right-subheading-container {
+	@extend .anim-left-subheading-container;
+	transform: translateX(-100px);
+}
+.anim-heading {
+	opacity: 0;
+	transform: translateY(100px);
+	transition: all 0.5s ease;
+	&.animationToggle {
+		opacity: 1;
+		transform: none;
+		transition: all 0.5s ease 1s;
+	}
+}
+.anim-subheading {
+	opacity: 0;
+	&.animationToggle {
+		opacity: 1;
+		transition: all 2s ease 0.5s;
+	}
+}
+.anim-left-para-container {
+	opacity: 0;
+	transform: perspective(100px) translateX(200px);
+	transition: all 1s ease;
+	&.animationToggle {
+		opacity: 1;
+		transform: none;
+		transition: all 1s ease 1s;
+	}
+}
+.anim-right-para-container {
+	@extend .anim-left-para-container;
+	transform: perspective(100px) translateX(-200px);
+}
+.anim-para {
+	opacity: 0;
+	transition: all 0.5s ease;
+	&.animationToggle {
+		opacity: 1;
+		transition: all 0.5s ease 2s;
+	}
+}
+
+/* Animations for max-width: 800px */
+
+@media screen and (max-width: 800px) {
+	.anim-nav {
+		&.animationToggle {
+			transition: all 1s ease-out 1s;
+		}
+	}
+	.anim-left-heading-container {
+		transform: translateX(50px);
+		transition: all 0.5s ease;
+		&.animationToggle {
+			transform: none;
+			transition: all 0.5s ease;
+		}
+	}
+	.anim-left-subheading-container {
+		transform: translateX(50px);
+		transition: all 0.5s ease;
+		&.animationToggle {
+			transform: none;
+			transition: all 0.5s ease;
+		}
+	}
+	.anim-right-heading-container {
+		transform: translateX(-50px);
+	}
+	.anim-right-subheading-container {
+		transform: translateX(-50px);
+	}
+	.anim-heading {
+		transform: translateY(10px);
+		transition: all 0.5s ease;
+		&.animationToggle {
+			transform: none;
+			transition: all 0.5s ease 0.5s;
+		}
+	}
+	.anim-subheading {
+		&.animationToggle {
+			transition: all 1s ease 0.5s;
+		}
+	}
+	.anim-left-para-container {
+		transform:  none;
+		transition: all 1s ease;
+		&.animationToggle {
+			transition: all 1s ease 0.5s;
+		}
+	}
+	.anim-right-para-container {
+		transform: none;
+	}
+	.anim-para {
+		&.animationToggle {
+			transition: all 0.5s ease 1s;
+		}
+	}
+}
+
 /* Mixins */
 
 @mixin background-section($image, $position) {
