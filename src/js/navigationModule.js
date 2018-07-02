@@ -132,4 +132,7 @@ $(function () {
 			}, scrollTime);
 		}
 	})
+	
+	// disabling touchmove event on mobiles to prevent free movement 
+	$("*").bind("touchmove", false);
 });
